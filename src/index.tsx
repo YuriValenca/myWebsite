@@ -2,11 +2,15 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesComponent from './routes';
+import { Provider } from 'react-redux';
+import store from './PokeConsult/store/store';
 
 ReactDOM.render(
-  <Router>
-    <RoutesComponent />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <RoutesComponent />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
