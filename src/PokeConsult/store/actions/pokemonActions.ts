@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Pokemon } from '../types';
 
-export const fetchPokemon = createAsyncThunk<Pokemon>('pokemon/fetchPokemon', async () => {
-  const response = await axios.get('https://pokeapi.co/api/v2/pokemon/1');
+export const fetchPokemon = createAsyncThunk<Pokemon, string>('pokemon/fetchPokemon', async (pokemonName: string) => {
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
   const pokemon: Pokemon = {
     id: response.data.id,
     name: response.data.name,

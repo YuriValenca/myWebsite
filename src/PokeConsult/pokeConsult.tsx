@@ -11,10 +11,9 @@ const PokeConsult = () => {
 
   const pokemon = useSelector((state: RootState) => state.pokemon.pokemon);
   const isLoading = useSelector((state: RootState) => state.pokemon.isLoading);
-  const error = useSelector((state: RootState) => state.pokemon.error);
 
   useEffect(() => {
-    dispatch(fetchPokemon() as unknown as AnyAction);
+    dispatch(fetchPokemon('bulbasaur') as unknown as AnyAction);
   }, [dispatch]);
 
   return (
@@ -33,7 +32,6 @@ const PokeConsult = () => {
         <div>Weight: {pokemon?.weight}</div>
       </div>
       {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
       <hr />
       <Footer />
     </>
