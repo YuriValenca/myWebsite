@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Header from './Header/header';
+import Header from './Header';
 import Footer from '../Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
@@ -11,16 +11,14 @@ const PokeConsult = () => {
 
   const pokemon = useSelector((state: RootState) => state.pokemon.pokemon);
   const isLoading = useSelector((state: RootState) => state.pokemon.isLoading);
-  const error = useSelector((state: RootState) => state.pokemon.error);
 
   useEffect(() => {
-    dispatch(fetchPokemon() as unknown as AnyAction);
+    dispatch(fetchPokemon('bulbasaur') as unknown as AnyAction);
   }, [dispatch]);
 
   return (
     <>
       <Header />
-      <hr />
       <div>
         <h3>{pokemon?.name}</h3>
         <img src={pokemon?.imageUrl} alt={pokemon?.name} />
@@ -33,7 +31,6 @@ const PokeConsult = () => {
         <div>Weight: {pokemon?.weight}</div>
       </div>
       {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
       <hr />
       <Footer />
     </>

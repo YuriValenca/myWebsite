@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './style.css';
 import RoutesComponent from './routes';
 import { Provider } from 'react-redux';
 import store from './PokeConsult/store/store';
