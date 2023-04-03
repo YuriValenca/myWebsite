@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Header from './Header/header';
+import Header from './Header';
 import Footer from '../Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
@@ -19,7 +19,6 @@ const PokeConsult = () => {
   return (
     <>
       <Header />
-      <hr />
       <div>
         <h3>{pokemon?.name}</h3>
         <img src={pokemon?.imageUrl} alt={pokemon?.name} />
