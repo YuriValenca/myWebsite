@@ -4,8 +4,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 130px;
-  background-color: yellow;
+  height: 45px;
+  background-color: #333;
   padding: 0 20px;
 `;
 
@@ -13,30 +13,22 @@ export const GoBackButton = styled.button`
 
 `;
 
-export const PokemonLogoImage = styled.img.attrs({
-  src: 'https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo-8.png',
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const PokeballImage = styled.img.attrs({
+  src: 'https://www.pngmart.com/files/2/Pokeball-PNG-Image.png',
 })`
-  width: 200px;
-  height: auto;
+  width: 36px;
+  height: 36px;
+  margin-right: 4px;
 `;
 
-export const PokemonInput = styled.input`
-  width: 450px;
-  height: 35px;
-  border-radius: 0;
-  background-color: transparent;
-  border: 0;
-  border-bottom: 3px solid #333;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const InputButtonContainer = styled.div`
-  margin-left: 35px;
-`;
-
-export const PokeButton = styled.button`
-  margin-left: 15px;
+export const AppTitle = styled.p`
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'flexoRegular';
 `;
