@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
 import { RootState } from './store/store';
 import { AnyAction } from 'redux';
+import PokemonDetails from './PokemonDetails';
 
 const PokeConsult = () => {
   const dispatch = useDispatch();
@@ -19,19 +20,13 @@ const PokeConsult = () => {
   return (
     <>
       <Header />
-      <div>
-        <h3>{pokemon?.name}</h3>
-        <img src={pokemon?.imageUrl} alt={pokemon?.name} />
-        <ul>
-          {pokemon?.types.map((type: string) => (
-            <li>{type}</li>
-          ))}
-        </ul>
-        <div>Height: {pokemon?.height}</div>
-        <div>Weight: {pokemon?.weight}</div>
-      </div>
-      {isLoading && <p>Loading...</p>}
-      <hr />
+      <PokemonDetails
+        name={pokemon?.name}
+        imageUrl={pokemon?.imageUrl}
+        types={pokemon?.types}
+        height={pokemon?.height}
+        weight={pokemon?.weight}
+      />
       <Footer />
     </>
   )
