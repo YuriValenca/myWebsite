@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import './fonts.css';
 
 const App = () => {
   const navigate = useNavigate();
