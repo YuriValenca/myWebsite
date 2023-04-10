@@ -11,7 +11,6 @@ const PokeConsult = () => {
   const dispatch = useDispatch();
 
   const pokemon = useSelector((state: RootState) => state.pokemon.pokemon);
-  const isLoading = useSelector((state: RootState) => state.pokemon.isLoading);
 
   useEffect(() => {
     dispatch(fetchPokemon('bulbasaur') as unknown as AnyAction);
@@ -21,9 +20,11 @@ const PokeConsult = () => {
     <>
       <Header />
       <PokemonDetails
+        id={pokemon?.id}
         name={pokemon?.name}
         imageUrl={pokemon?.imageUrl}
         types={pokemon?.types}
+        stats={pokemon?.stats}
         height={pokemon?.height}
         weight={pokemon?.weight}
       />
