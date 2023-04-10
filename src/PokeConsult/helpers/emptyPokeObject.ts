@@ -3,6 +3,7 @@ export const emptyPokeObject = {
   name: '',
   imageUrl: '',
   types: [],
+  stats: [],
   height: 0,
   weight: 0,
 };

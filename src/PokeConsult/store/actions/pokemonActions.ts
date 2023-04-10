@@ -9,8 +9,9 @@ export const fetchPokemon = createAsyncThunk<Pokemon, string>('pokemon/fetchPoke
     name: response.data.name,
     imageUrl: response.data.sprites.other['official-artwork'].front_default,
     types: response.data.types.map((type: { type: { name: string } }) => type.type.name),
+    stats: response.data.stats.map((stat: { base_stat: number }) => stat.base_stat),
     height: response.data.height,
-    weight: response.data.weight
+    weight: response.data.weight,
   };
   return pokemon;
 });
