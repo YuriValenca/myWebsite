@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Header from './Header';
-import Footer from '../Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
+import { fetchPokemon } from './store/actions/pokeConsult';
 import { RootState } from './store/store';
 import { AnyAction } from 'redux';
+import Header from './Header';
+import Footer from '../Footer';
 import PokemonDetails from './PokemonDetails';
 
 const PokeConsult = () => {

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState } from "react";
 import { AnyAction } from "redux";
-import { fetchPokemon } from "../store/actions/pokemonActions";
+import { fetchPokemon } from "../store/actions/pokeConsult";
 import { RootState, useAppDispatch } from "../store/store";
 import {
   DetailsContainer,

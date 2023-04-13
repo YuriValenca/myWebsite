@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import pokemonReducer from './reducers/pokemonReducers';
+import pokemonReducer from './reducers/pokeConsult';
 import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({

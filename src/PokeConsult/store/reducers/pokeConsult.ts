@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Pokemon } from '../types';
-import { fetchPokemon } from '../actions/pokemonActions';
+import { fetchPokemon } from '../actions/pokeConsult';
 import { emptyPokeObject } from '../../helpers/emptyPokeObject';
 
 interface PokemonState {
