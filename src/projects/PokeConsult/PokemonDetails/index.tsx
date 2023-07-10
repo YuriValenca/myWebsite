@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useState } from "react";
 import { AnyAction } from "redux";
 import { fetchPokemon } from "../store/actions/pokemonActions";
-import { RootState, useAppDispatch } from "../store/store";
+import { RootState, useAppDispatch } from "../../../store";
 import {
   DetailsContainer,
   InputButtonContainer,
@@ -75,7 +75,7 @@ const PokemonDetails = ({
               value={pokemonName}
               onChange={handleInputChange}
               onSubmit={handleSearch}
-              onKeyDown={(event) => {
+              onKeyDown={(event: any) => {
                 if (event.key === 'Enter') {
                   handleSearch();
                 }

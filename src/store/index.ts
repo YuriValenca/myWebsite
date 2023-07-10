@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import pokemonReducer from './reducers/pokemonReducers';
+import pokemonReducer from '../projects/PokeConsult/store/reducers/pokemonReducers';
+import heroReducer from '../projects/MarvelSearch/store/reducer/fetchHero';
+import heroListReducer from '../projects/MarvelSearch/store/reducer/fetchAllHero';
 import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({
   pokemon: pokemonReducer,
+  hero: heroReducer,
+  heroList: heroListReducer,
 });
 
 const store = configureStore({

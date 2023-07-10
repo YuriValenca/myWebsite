@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import Header from './Header';
+import Header from '../Header';
 import Footer from '../Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
-import { RootState } from './store/store';
+import { RootState } from '../../store';
 import { AnyAction } from 'redux';
 import PokemonDetails from './PokemonDetails';
 
