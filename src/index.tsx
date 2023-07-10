@@ -1,18 +1,20 @@
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './style.css';
 import RoutesComponent from './routes';
 import { Provider } from 'react-redux';
-import store from './PokeConsult/store/store';
+import store from '../src/store';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
   <Provider store={store}>
     <Router>
       <RoutesComponent />
     </Router>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
