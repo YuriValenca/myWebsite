@@ -1,12 +1,14 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import App from './App';
-import PokeConsult from './PokeConsult/pokeConsult';
+import PokeConsult from './projects/PokeConsult/pokeConsult';
+import MarvelSearch from './projects/MarvelSearch/components/AppContent';
 
 const RoutesComponent = () => {
   return (
     <Routes>
       <Route path="/" element={App()} />
-      <Route path="PokeConsult/pokeConsult" element={PokeConsult()} />
+      <Route path="/pokeConsult" element={PokeConsult()} />
+      <Route path="/marvelSearch" element={MarvelSearch()} />
     </Routes>
   );
 }

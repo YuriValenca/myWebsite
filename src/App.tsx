@@ -3,14 +3,16 @@ import './fonts.css';
 
 const App = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('./PokeConsult/pokeConsult');
+  const handleClick = (path: string) => {
+    navigate(`./${path.toLowerCase()}`);
+    return;
   }
 
   return (
     <>
       <p>Hello World</p>
-      <button onClick={handleClick}>PokeConsult</button>
+      <button onClick={() => handleClick('PokeConsult')}>PokeConsult</button>
+      <button onClick={() => handleClick('MarvelSearch')}>Marvel Search</button>
     </>
   )
 }
