@@ -76,10 +76,16 @@ export const DetailsContainer = styled.div`
   align-items: center;
   padding-top: 16px;
   height: calc(100vh - 65px);
+
 `;
 
 export const InputButtonContainer = styled.div`
   margin-left: 35px;
+  @media screen and (max-width: 700px) {
+    display: flex;
+    margin-left: 0;
+    width: 80%;
+  }
 `;
 
 export const PokemonInput = styled.input`
@@ -94,16 +100,42 @@ export const PokemonInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const PokeButton = styled.button`
   margin-left: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f44336;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e53935;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 12px;
+  }
 `;
 
 export const PokemonDetailBody = styled.div`
   display: flex;
   margin-top: 36px;
   font-size: 20px;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const PokemonImage = styled.img`
@@ -112,6 +144,11 @@ export const PokemonImage = styled.img`
   background-color: #ECECEC;
   border-radius: 6px;
   margin-right: 16px;
+  @media screen and (max-width: 900px) {
+    width: 80%;
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
 `;
 
 export const DetailsStatsContainer = styled.div`
@@ -119,6 +156,9 @@ export const DetailsStatsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 300px;
+  @media screen and (max-width: 400px) {
+    width: 80%;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -139,6 +179,9 @@ export const PokemonStats = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 12px 0;
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Stat = styled.p``;
@@ -164,4 +207,10 @@ export const ErrorContainer = styled.div`
   align-items: center;
   margin-top: 36px;
   font-family: flexoregular;
+  @media screen and (max-width: 900px) {
+    img, p {
+      width: 80%;
+      margin-bottom: 24px;
+    }
+  }
 `;
