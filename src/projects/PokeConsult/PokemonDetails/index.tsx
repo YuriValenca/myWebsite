@@ -51,7 +51,7 @@ const PokemonDetails = ({
   }
 
   const handleSearch = () => {
-    dispatch(fetchPokemon(pokemonName) as unknown as AnyAction);
+    dispatch(fetchPokemon(pokemonName.toLowerCase()) as unknown as AnyAction);
   }
 
   const dualTypePokemon = () => {
@@ -131,7 +131,7 @@ const PokemonDetails = ({
             </PokemonDetailBody>
             :
             <ErrorContainer>
-              <p>Sorry :&#40; we couldn't find any results that match your input</p>
+              <p>Sorry :&#40; we couldn't find any results that matches your input</p>
               <img src="https://media.tenor.com/KJzbxvVG5qwAAAAC/detective-pikachu-investigation.gif" alt="error" />
             </ErrorContainer>
           }
