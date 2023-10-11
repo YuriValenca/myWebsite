@@ -18,7 +18,9 @@ const PokeConsult = () => {
 
   return (
     <>
-      <Header />
+      <Header
+        text="PokeConsult"
+      />
       <PokemonDetails
         id={pokemon?.id}
         name={pokemon?.name}
