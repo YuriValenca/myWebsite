@@ -5,11 +5,13 @@ import pokemonReducer from '../projects/PokeConsult/store/reducers/pokemonReduce
 import heroReducer from '../projects/MarvelSearch/store/reducer/fetchHero';
 import heroListReducer from '../projects/MarvelSearch/store/reducer/fetchAllHero';
 import { useDispatch } from 'react-redux';
+import pokemonGridReducer from '../projects/PokemonGrid/store/reducers/fetchAllPokemon';
 
 const rootReducer = combineReducers({
   pokemon: pokemonReducer,
   hero: heroReducer,
   heroList: heroListReducer,
+  pokemonGrid: pokemonGridReducer,
 });
 
 const store = configureStore({
