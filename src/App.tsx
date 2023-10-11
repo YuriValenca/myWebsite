@@ -13,6 +13,7 @@ const App = () => {
       <p>Hello World</p>
       <button onClick={() => handleClick('PokeConsult')}>PokeConsult</button>
       <button onClick={() => handleClick('MarvelSearch')}>Marvel Search</button>
+      <button onClick={() => handleClick('PokemonGrid')}>Pokemon Grid</button>
     </>
   )
 }
