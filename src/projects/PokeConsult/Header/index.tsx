@@ -7,7 +7,13 @@ import {
 } from "./style";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+interface HeaderTypes {
+  text: string;
+}
+
+const Header = ({
+  text
+}: HeaderTypes) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
@@ -21,7 +27,7 @@ const Header = () => {
       <TitleContainer>
         <PokeballImage />
         <AppTitle>
-          PokeConsult
+          {text}
         </AppTitle>
       </TitleContainer>
     </HeaderContainer>
