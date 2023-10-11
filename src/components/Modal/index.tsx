@@ -7,11 +7,13 @@ import {
 interface ModalTypes {
   onClose: () => void;
   children: React.ReactNode;
+  width?: string;
 }
 
 const Modal = ({
   onClose,
   children,
+  width,
 }: ModalTypes) => {
   const handleClose = () => {
     onClose();
@@ -23,6 +25,7 @@ const Modal = ({
     >
       <ModalContent
         onClick={(e: any) => e.stopPropagation()}
+        width={width}
       >
         <ModalCloseButton
           onClick={handleClose}

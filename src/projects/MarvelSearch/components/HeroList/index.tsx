@@ -4,7 +4,7 @@ import { AnyAction } from "redux";
 import { RootState, useAppDispatch } from "../../../../store";
 import { fetchHero } from "../../store/actions/fetchHero";
 import loading from "../../../../assets/images/loading.gif";
-import Modal from "../Modal";
+import Modal from "../../../../components/Modal";
 import SearchHero from "../SearchHero";
 import {
   HeroListContainer,

@@ -1,5 +1,9 @@
 import { styled } from "styled-components";
 
+interface WidthTypes {
+  width?: string;
+}
+
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -12,14 +16,13 @@ export const ModalOverlay = styled.div`
   justify-content: center;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div<WidthTypes>`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fff;
   border-radius: 6px;
-  min-width: 60%;
-  max-width: 60%;
+  width: ${props => props.width ? props.width : '60%'};
   height: auto;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
