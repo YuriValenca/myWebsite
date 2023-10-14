@@ -25,6 +25,7 @@ const HeroList = () => {
     return storedPage ? parseInt(storedPage) : 1;
   });
   const [selectedHero, setSelectedHero] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const heroListData = useSelector((state: RootState) => state.heroList.heroes);
   const isLoading = useSelector((state: RootState) => state.heroList.isLoading);
@@ -43,8 +44,12 @@ const HeroList = () => {
     }, 525);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   const handleModalClose = () => {
-    setSelectedHero(null);
+    setIsModalOpen(false);
   };
 
   const handlePageChange = (page: number) => {
@@ -73,7 +78,10 @@ const HeroList = () => {
         <>
           <HeroListGrid>
             {visibleHeroes.map((hero) => (
-              <HeroListGridCard>
+              <HeroListGridCard
+                key={hero.id}
+                onClick={openModal}
+              >
                 <HeroListGridCardName>
                   {hero.name}
                 </HeroListGridCardName>
@@ -107,8 +115,11 @@ const HeroList = () => {
             >
               &rarr;
             </PaginationButton>
-            {selectedHero && (
-              <Modal onClose={handleModalClose}>
+            {isModalOpen && (
+              <Modal
+                onClose={handleModalClose}
+                position="center"
+              >
                 <SearchHero
                   asModal
                 />
