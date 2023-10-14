@@ -4,7 +4,11 @@ interface WidthTypes {
   width?: string;
 }
 
-export const ModalOverlay = styled.div`
+interface PositionTypes {
+  position: string;
+}
+
+export const ModalOverlay = styled.div<PositionTypes>`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,11 +16,11 @@ export const ModalOverlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
-  align-items: center;
+  align-items: ${props => props.position === 'top' ? 'flex-start' : 'center'};
   justify-content: center;
 `;
 
-export const ModalContent = styled.div<WidthTypes>`
+export const ModalContent = styled.div<WidthTypes & PositionTypes>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,18 +30,6 @@ export const ModalContent = styled.div<WidthTypes>`
   height: auto;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
-export const ModalCloseButton = styled.button`
-  align-self: flex-end;
-  border: none;
-  background: transparent;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: -24px;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1;
-  padding: 0;
-  cursor: pointer;
-  color: #000;
+  margin-top: ${props => props.position === 'top' ? '128px' : '0'};
+  max-height: ${props => props.position === 'top' ? '210px' : 'auto'};
 `;
