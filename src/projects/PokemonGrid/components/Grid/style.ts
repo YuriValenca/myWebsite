@@ -6,8 +6,12 @@ export const GridContainer = styled.div`
 `;
 
 export const GridItem = styled.div`
-  width: 135px;
-  height: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  height: 200px;
   background-color: #F2F3F4;
   border: 0.1px solid #DADEDF;
   cursor: pointer;
@@ -31,6 +35,25 @@ export const GridItem = styled.div`
   &:hover {
     background-color: #F0F0F0;
   }
+`;
+
+export const SelectedPokemonImage = styled.img`
+  width: 140px;
+  height: 140px;
+  max-width: 140px;
+  max-height: 140px;
+`;
+
+export const SelectedPokemonName = styled.p`
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1F1F1F;
+  font-family: 'pokemon_classicregular';
+  margin: 0 8px 8px;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 12px;
 `;
 
 export const ModalContainer = styled.div`
