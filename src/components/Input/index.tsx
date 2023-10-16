@@ -9,7 +9,7 @@ interface InputProps {
   placeholder: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({
@@ -28,6 +28,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        autoFocus
       />
     </InputContainer>
   );
