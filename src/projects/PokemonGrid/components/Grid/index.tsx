@@ -1,8 +1,12 @@
 import { useRef, useState } from "react";
 import { Pokemon } from "../../store/types";
+import Modal from "../../../../components/Modal";
+import Input from "../../../../components/Input";
 import {
   GridContainer,
   GridItem,
+  SelectedPokemonImage,
+  SelectedPokemonName,
   ModalContainer,
   ModalTitle,
   AutocompletePokemonList,
@@ -12,8 +16,6 @@ import {
   PokemonSuggestionName,
   SelectPokemonButton,
 } from "./style";
-import Modal from "../../../../components/Modal";
-import Input from "../../../../components/Input";
 
 interface GridTypes {
   pokemonData: Pokemon[];
@@ -25,15 +27,18 @@ const Grid = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<Pokemon[]>([]);
+  const [selectedCellIndex, setSelectedCellIndex] = useState<number | null>(null);
+  const [
+    selectedPokemon, setSelectedPokemon
+  ] = useState<Array<Pokemon | null>>(Array(9).fill(null));
+  const [selectedPokemonInGrid, setSelectedPokemonInGrid] = useState<string[]>([]);
+
   const autocompleteRef = useRef<HTMLUListElement>(null);
 
-  const openModal = () => {
+  const openModal = (index: number) => {
+    setSelectedCellIndex(index);
     setIsModalOpen(true);
   };
-
-  const handleSearch = (searchValue: string) => {
-    console.log(searchValue);
-  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -41,7 +46,8 @@ const Grid = ({
 
     if (value.length >= 4) {
       const filteredSuggestions = pokemonData.filter(pokemon =>
-        pokemon.name.toLowerCase().includes(value.toLowerCase())
+        pokemon.name.toLowerCase().includes(value.toLowerCase()) &&
+        !selectedPokemonInGrid.includes(pokemon.name)
       );
       setSuggestions(filteredSuggestions);
     } else {
@@ -57,15 +63,19 @@ const Grid = ({
       .join(' ');
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch(inputValue);
-      setSuggestions([]);
-    }
-  };
+  const handleAutocompleteItemClick = (selectedSuggestion: Pokemon) => {
+    if (selectedCellIndex !== null) {
+      const newSelectedPokemon = [...selectedPokemon];
+      newSelectedPokemon[selectedCellIndex] = selectedSuggestion;
+      setSelectedPokemon(newSelectedPokemon);
 
-  const handleAutocompleteItemClick = (selectedSuggestion: string) => {
-    console.log(selectedSuggestion);
+      const newSelectedPokemonInGrid = [...selectedPokemonInGrid, selectedSuggestion.name];
+      setSelectedPokemonInGrid(newSelectedPokemonInGrid);
+
+      setIsModalOpen(false);
+      setSuggestions([]);
+      setInputValue('');
+    }
   };
 
   return (
@@ -73,8 +83,22 @@ const Grid = ({
       {[...Array(9)].map((_, index) => (
         <GridItem
           key={index}
-          onClick={openModal}
-        />
+          onClick={() => openModal(index)}
+        >
+          {selectedPokemon[index] ? (
+            <>
+              <SelectedPokemonImage
+                src={selectedPokemon[index]?.image}
+                alt={selectedPokemon[index]?.name}
+              />
+              {selectedPokemon[index] !== undefined && (
+                <SelectedPokemonName>
+                  {formatPokemonName(selectedPokemon[index]!.name)}
+                </SelectedPokemonName>
+              )}
+            </>
+          ) : (null)}
+        </GridItem>
       ))}
       {isModalOpen && (
         <Modal
@@ -92,7 +116,6 @@ const Grid = ({
               placeholder="Type your guess here"
               value={inputValue}
               onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
             />
             {suggestions.length > 0 && (
               <AutocompletePokemonList
@@ -101,7 +124,7 @@ const Grid = ({
                 {suggestions.map((suggestion, index) => (
                   <AutocompletePokemonItem
                     key={index}
-                    onClick={() => handleAutocompleteItemClick(suggestion.name)}
+                    onClick={() => handleAutocompleteItemClick(suggestion)}
                   >
                     <AutocompletePokemonImage
                       src={suggestion.image}
@@ -111,7 +134,9 @@ const Grid = ({
                       <PokemonSuggestionName>
                         {formatPokemonName(suggestion.name)}
                       </PokemonSuggestionName>
-                      <SelectPokemonButton>
+                      <SelectPokemonButton
+                        onClick={() => handleAutocompleteItemClick(suggestion)}
+                      >
                         Select
                       </SelectPokemonButton>
                     </NameAndButtonContainer>
