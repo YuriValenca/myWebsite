@@ -16,7 +16,7 @@ const PokemonGrid = () => {
   const pokemonData = useSelector((state: RootState) => state.pokemonGrid.pokemon);
 
   useEffect(() => {
-    // dispatch(fetchAllPokemon() as unknown as AnyAction);
+    dispatch(fetchAllPokemon() as unknown as AnyAction);
   }, []);
 
   return (
