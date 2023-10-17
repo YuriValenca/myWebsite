@@ -5,12 +5,13 @@ import MarvelSearch from './projects/MarvelSearch/components/AppContent';
 import PokemonGrid from './projects/PokemonGrid/components/AppContent';
 
 const RoutesComponent = () => {
+  console.log('teste')
   return (
     <Routes>
-      <Route path="/" element={App()} />
-      <Route path="/pokeConsult" element={PokeConsult()} />
-      <Route path="/marvelSearch" element={MarvelSearch()} />
-      <Route path="/pokemonGrid" element={PokemonGrid()} />
+      <Route path="/" element={<App />} />
+      <Route path="/pokeConsult" element={<PokeConsult />} />
+      <Route path="/marvelSearch" element={<MarvelSearch />} />
+      <Route path="/pokemonGrid" element={<PokemonGrid />} />
     </Routes>
   );
 }
