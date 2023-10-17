@@ -5,6 +5,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 55px;
+  width: 100%;
   background-color: #333;
   padding: 0 20px;
 `;
@@ -18,9 +19,7 @@ export const TitleContainer = styled.div`
   align-items: center;
 `;
 
-export const PokeballImage = styled.img.attrs({
-  src: 'https://www.pngmart.com/files/2/Pokeball-PNG-Image.png',
-})`
+export const PokeballImage = styled.img`
   width: 36px;
   height: 36px;
   margin-right: 4px;

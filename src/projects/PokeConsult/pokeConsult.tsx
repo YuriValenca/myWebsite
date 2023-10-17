@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Header from '../PokeConsult/Header';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemon } from '../PokeConsult/store/actions/pokemonActions';
