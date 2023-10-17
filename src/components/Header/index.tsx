@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import pokeball from '../../assets/images/pokeball.png'
 import {
   HeaderContainer,
   GoBackButton,
@@ -5,7 +7,6 @@ import {
   PokeballImage,
   AppTitle,
 } from "./style";
-import { useNavigate } from "react-router-dom";
 
 interface HeaderTypes {
   text: string;
@@ -25,7 +26,10 @@ const Header = ({
     <HeaderContainer>
       <GoBackButton onClick={handleClick}>Go back</GoBackButton>
       <TitleContainer>
-        <PokeballImage />
+        <PokeballImage
+          src={pokeball}
+          alt="pokeball"
+        />
         <AppTitle>
           {text}
         </AppTitle>
