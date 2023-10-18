@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const InputContainer = styled.div`
+interface ErrorTypes {
+  error?: boolean;
+}
+
+export const InputContainer = styled.div<ErrorTypes>`
   display: flex;
   align-items: center;
   background-color: #fff;
-  border: 2px solid #929292;
+  border: 2px solid;
+  border-color: ${(props: ErrorTypes) => (props.error ? "#f44336" : "#929292")};
   border-radius: 4px;
   padding: 8px;
   width: 100%;
