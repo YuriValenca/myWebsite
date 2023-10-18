@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { Pokemon } from "../../store/types";
 import Modal from "../../../../components/Modal";
 import Input from "../../../../components/Input";
+import { verifyUserChoice } from "../../store/actions/verifyUserChoice";
+import { useAppDispatch } from "../../../../store";
+import { AnyAction } from "redux";
 import {
   GridContainer,
   GridItem,
@@ -19,23 +22,32 @@ import {
 
 interface GridTypes {
   pokemonData: Pokemon[];
+  selectedCellIndex: number | 0;
+  setSelectedCellIndex: React.Dispatch<React.SetStateAction<number | 0>>;
+  cellTypes: string[][];
 }
 
 const Grid = ({
   pokemonData,
+  selectedCellIndex,
+  setSelectedCellIndex,
+  cellTypes,
 }: GridTypes) => {
+  const dispatch = useAppDispatch();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<Pokemon[]>([]);
-  const [selectedCellIndex, setSelectedCellIndex] = useState<number | null>(null);
   const [
     selectedPokemon, setSelectedPokemon
   ] = useState<Array<Pokemon | null>>(Array(9).fill(null));
-  const [selectedPokemonInGrid, setSelectedPokemonInGrid] = useState<string[]>([]);
+  const [pokemonNamesInGrid, setPokemonNamesInGrid] = useState<string[]>([]);
+  const [inputError, setInputError] = useState(false);
 
   const autocompleteRef = useRef<HTMLUListElement>(null);
 
   const openModal = (index: number) => {
+    setInputError(false)
     setSelectedCellIndex(index);
     setIsModalOpen(true);
   };
@@ -47,7 +59,7 @@ const Grid = ({
     if (value.length >= 4) {
       const filteredSuggestions = pokemonData.filter(pokemon =>
         pokemon.name.toLowerCase().includes(value.toLowerCase()) &&
-        !selectedPokemonInGrid.includes(pokemon.name)
+        !pokemonNamesInGrid.includes(pokemon.name)
       );
       setSuggestions(filteredSuggestions);
     } else {
@@ -63,18 +75,28 @@ const Grid = ({
       .join(' ');
   }
 
-  const handleAutocompleteItemClick = (selectedSuggestion: Pokemon) => {
-    if (selectedCellIndex !== null) {
-      const newSelectedPokemon = [...selectedPokemon];
-      newSelectedPokemon[selectedCellIndex] = selectedSuggestion;
-      setSelectedPokemon(newSelectedPokemon);
+  const handleAutocompleteItemClick = (selectedSuggestion: Pokemon, selectedCellIndex: number) => {
+    setInputError(false)
+    const cellType = cellTypes[selectedCellIndex];
+    if (selectedCellIndex !== 0) {
+      dispatch(verifyUserChoice(selectedSuggestion, cellType) as unknown as AnyAction)
+        .then((response: boolean) => {
+          if (response) {
+            setInputValue('');
+            setSuggestions([]);
+            const newSelectedPokemon = [...selectedPokemon];
+            newSelectedPokemon[selectedCellIndex] = selectedSuggestion;
+            setSelectedPokemon(newSelectedPokemon);
 
-      const newSelectedPokemonInGrid = [...selectedPokemonInGrid, selectedSuggestion.name];
-      setSelectedPokemonInGrid(newSelectedPokemonInGrid);
-
-      setIsModalOpen(false);
-      setSuggestions([]);
-      setInputValue('');
+            const newpokemonNamesInGrid = [...pokemonNamesInGrid, selectedSuggestion.name];
+            setPokemonNamesInGrid(newpokemonNamesInGrid);
+            setIsModalOpen(false);
+          } else {
+            setInputValue('');
+            setSuggestions([]);
+            setInputError(true);
+          }
+        });
     }
   };
 
@@ -116,6 +138,7 @@ const Grid = ({
               placeholder="Type your guess here"
               value={inputValue}
               onChange={handleInputChange}
+              error={inputError}
             />
             {suggestions.length > 0 && (
               <AutocompletePokemonList
@@ -124,7 +147,9 @@ const Grid = ({
                 {suggestions.map((suggestion, index) => (
                   <AutocompletePokemonItem
                     key={index}
-                    onClick={() => handleAutocompleteItemClick(suggestion)}
+                    onClick={() => {
+                      handleAutocompleteItemClick(suggestion, selectedCellIndex)
+                    }}
                   >
                     <AutocompletePokemonImage
                       src={suggestion.image}
@@ -135,7 +160,9 @@ const Grid = ({
                         {formatPokemonName(suggestion.name)}
                       </PokemonSuggestionName>
                       <SelectPokemonButton
-                        onClick={() => handleAutocompleteItemClick(suggestion)}
+                        onClick={() => {
+                          handleAutocompleteItemClick(suggestion, selectedCellIndex)
+                        }}
                       >
                         Select
                       </SelectPokemonButton>

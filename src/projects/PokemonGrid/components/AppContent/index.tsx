@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "../../../../components/Header";
 import Grid from "../Grid";
 import { useSelector } from "react-redux";
@@ -20,15 +20,56 @@ import {
 
 const PokemonGrid = () => {
   const dispatch = useAppDispatch();
-  const pokemonData = useSelector((state: RootState) => state.pokemonGrid.pokemon);
+
+  const [cellTypes, setCellTypes] = useState(Array(9).fill(Array(2).fill('')));
+  const [selectedCellIndex, setSelectedCellIndex] = useState<number | 0>(0);
+
+  const pokemonData = useSelector((state: RootState) => state.pokemonGrid.fetchAllPokemon.pokemon);
+
+  const columnRandomTypes = useMemo(() => typeExporter.getRandomTypes(3), []);
+  const rowRandomTypes = useMemo(() => typeExporter.getRandomTypes(3), []);
 
   useEffect(() => {
-    // dispatch(fetchAllPokemon() as unknown as AnyAction);
+    dispatch(fetchAllPokemon() as unknown as AnyAction);
+    setCellTypes([[
+      columnRandomTypes[0],
+      rowRandomTypes[0],
+    ], [
+      columnRandomTypes[0],
+      rowRandomTypes[1],
+    ], [
+      columnRandomTypes[0],
+      rowRandomTypes[2],
+    ], [
+      columnRandomTypes[1],
+      rowRandomTypes[0],
+    ], [
+      columnRandomTypes[1],
+      rowRandomTypes[1],
+    ], [
+      columnRandomTypes[1],
+      rowRandomTypes[2],
+    ], [
+      columnRandomTypes[2],
+      rowRandomTypes[0],
+    ], [
+      columnRandomTypes[2],
+      rowRandomTypes[1],
+    ], [
+      columnRandomTypes[2],
+      rowRandomTypes[2],
+    ]
+    ]);
   }, []);
 
-  const typeRandomizer = () => {
-    const randomTypes = typeExporter.getRandomTypes(3);
-    return randomTypes.map((type, index) => (
+  const typeRandomizer = (column: boolean, row: boolean) => {
+    if (column) return columnRandomTypes.map((type, index) => (
+      <Type key={index}>
+        <img src={typeExporter.typeImages[type]} alt={type} />
+      </Type>
+    ));
+
+    if (row) return rowRandomTypes.map((type, index) => (
       <Type key={index}>
         <img src={typeExporter.typeImages[type]} alt={type} />
       </Type>
@@ -47,14 +88,17 @@ const PokemonGrid = () => {
             src={pokeball}
             alt="pokeball"
           />
-          {typeRandomizer()}
+          {typeRandomizer(false, true)}
         </ChallengesRow>
         <GridAndTypesContainer>
           <ChallengesColumn>
-            {typeRandomizer()}
+            {typeRandomizer(true, false)}
           </ChallengesColumn>
           <Grid
             pokemonData={pokemonData}
+            selectedCellIndex={selectedCellIndex}
+            setSelectedCellIndex={setSelectedCellIndex}
+            cellTypes={cellTypes}
           />
         </GridAndTypesContainer>
       </PokemonGridContainer>
