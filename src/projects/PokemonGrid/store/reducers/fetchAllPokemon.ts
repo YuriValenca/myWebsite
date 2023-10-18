@@ -6,7 +6,7 @@ const initialState: PokemonState = {
   error: '',
 };
 
-const pokemonGridReducer = (state = initialState, action: PokemonActionTypes) => {
+export const fetchAllPokemonReducer = (state = initialState, action: PokemonActionTypes) => {
   switch (action.type) {
     case 'FETCH_ALL_POKEMON_SUCCESS':
       return {
@@ -29,5 +29,3 @@ const pokemonGridReducer = (state = initialState, action: PokemonActionTypes) =>
       return state;
   }
 };
-
-export default pokemonGridReducer;
