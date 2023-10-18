@@ -8,6 +8,8 @@ export const fetchAllPokemon = () => async (dispatch: Dispatch<PokemonActionType
     const data = await response.json();
 
     const pokemonImages = await Promise.all(data.results.map(async (pokemon: any) => {
+      const id = pokemon.url.split('/')[6];
+
       const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`;
       const imageResponse = await fetch(imageUrl);
 
@@ -23,6 +25,7 @@ export const fetchAllPokemon = () => async (dispatch: Dispatch<PokemonActionType
 
       return {
         ...pokemon,
+        id,
         image,
       }
     }));
