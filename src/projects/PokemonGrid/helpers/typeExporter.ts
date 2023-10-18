@@ -38,8 +38,6 @@ export const typeImages = {
   water: waterImg,
 }
 
-type TypeImages = Record<keyof typeof typeImages, string>;
-
 const getRandomTypes = (count: number): (keyof typeof typeImages)[] => {
   const randomTypes = Object.keys(typeImages)
     .sort(() => 0.5 - Math.random())
