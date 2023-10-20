@@ -16,7 +16,7 @@ import {
   GridAndTypesContainer,
   ChallengesColumn,
   Type,
-  NewGameButton,
+  // NewGameButton,
 } from "./style";
 
 const PokemonGrid = () => {
@@ -116,11 +116,12 @@ const PokemonGrid = () => {
             gameResetter={gameResetter}
           />
         </GridAndTypesContainer>
-        <NewGameButton
+        {/* NewGameButton disabled until context is implemented */}
+        {/* <NewGameButton
           onClick={() => gameResetter()}
         >
           New Game
-        </NewGameButton>
+        </NewGameButton> */}
       </PokemonGridContainer>
     </AppContentContainer>
   );

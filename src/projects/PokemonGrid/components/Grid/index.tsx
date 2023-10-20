@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pokemon } from "../../store/types";
 import Modal from "../../../../components/Modal";
 import Input from "../../../../components/Input";
@@ -18,13 +18,18 @@ import {
   NameAndButtonContainer,
   PokemonSuggestionName,
   SelectPokemonButton,
+  EndGameContainer,
+  EndGameText,
+  ButtonsContainer,
 } from "./style";
+import { NewGameButton } from "../AppContent/style";
 
 interface GridTypes {
   pokemonData: Pokemon[];
   selectedCellIndex: number | 0;
   setSelectedCellIndex: React.Dispatch<React.SetStateAction<number | 0>>;
   cellTypes: string[][];
+  gameResetter: () => void;
 }
 
 const Grid = ({
@@ -32,10 +37,12 @@ const Grid = ({
   selectedCellIndex,
   setSelectedCellIndex,
   cellTypes,
+  gameResetter,
 }: GridTypes) => {
   const dispatch = useAppDispatch();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserInputModalOpen, setIsUserInputModalOpen] = useState(false);
+  const [isEndGameModalOpen, setIsEndGameModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<Pokemon[]>([]);
   const [
@@ -46,10 +53,22 @@ const Grid = ({
 
   const autocompleteRef = useRef<HTMLUListElement>(null);
 
+  const handleNewGameClick = () => {
+    setSelectedPokemon(Array(9).fill(null));
+    setPokemonNamesInGrid([]);
+    setIsEndGameModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (pokemonNamesInGrid.length === 9) {
+      setIsEndGameModalOpen(true);
+    }
+  }, [pokemonNamesInGrid]);
+
   const openModal = (index: number) => {
     setInputError(false)
     setSelectedCellIndex(index);
-    setIsModalOpen(true);
+    setIsUserInputModalOpen(true);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,26 +97,24 @@ const Grid = ({
   const handleAutocompleteItemClick = (selectedSuggestion: Pokemon, selectedCellIndex: number) => {
     setInputError(false)
     const cellType = cellTypes[selectedCellIndex];
-    if (selectedCellIndex !== 0) {
-      dispatch(verifyUserChoice(selectedSuggestion, cellType) as unknown as AnyAction)
-        .then((response: boolean) => {
-          if (response) {
-            setInputValue('');
-            setSuggestions([]);
-            const newSelectedPokemon = [...selectedPokemon];
-            newSelectedPokemon[selectedCellIndex] = selectedSuggestion;
-            setSelectedPokemon(newSelectedPokemon);
+    dispatch(verifyUserChoice(selectedSuggestion, cellType) as unknown as AnyAction)
+      .then((response: boolean) => {
+        if (response) {
+          setInputValue('');
+          setSuggestions([]);
+          const newSelectedPokemon = [...selectedPokemon];
+          newSelectedPokemon[selectedCellIndex] = selectedSuggestion;
+          setSelectedPokemon(newSelectedPokemon);
 
-            const newpokemonNamesInGrid = [...pokemonNamesInGrid, selectedSuggestion.name];
-            setPokemonNamesInGrid(newpokemonNamesInGrid);
-            setIsModalOpen(false);
-          } else {
-            setInputValue('');
-            setSuggestions([]);
-            setInputError(true);
-          }
-        });
-    }
+          const newpokemonNamesInGrid = [...pokemonNamesInGrid, selectedSuggestion.name];
+          setPokemonNamesInGrid(newpokemonNamesInGrid);
+          setIsUserInputModalOpen(false);
+        } else {
+          setInputValue('');
+          setSuggestions([]);
+          setInputError(true);
+        }
+      });
   };
 
   return (
@@ -122,10 +139,10 @@ const Grid = ({
           ) : (null)}
         </GridItem>
       ))}
-      {isModalOpen && (
+      {isUserInputModalOpen && (
         <Modal
           onClose={() => {
-            setIsModalOpen(false)
+            setIsUserInputModalOpen(false)
             setInputValue('');
             setSuggestions([]);
           }}
@@ -172,7 +189,28 @@ const Grid = ({
               </AutocompletePokemonList>
             )}
           </ModalContainer>
-
+        </Modal>
+      )}
+      {isEndGameModalOpen && (
+        <Modal
+          onClose={() => setIsEndGameModalOpen(false)}
+          position="center"
+          width="30%"
+        >
+          <EndGameContainer>
+            <ModalTitle>Congratulations! You caught all the Pokemon!</ModalTitle>
+            <EndGameText>You can play a new game, or take a look at the board you filled.</EndGameText>
+            <ButtonsContainer>
+              <NewGameButton
+                onClick={() => {
+                  gameResetter()
+                  handleNewGameClick()
+                }}
+              >New game</NewGameButton>
+              <EndGameText>or</EndGameText>
+              <NewGameButton onClick={() => setIsEndGameModalOpen(false)}>See board</NewGameButton>
+            </ButtonsContainer>
+          </EndGameContainer>
         </Modal>
       )}
     </GridContainer>
