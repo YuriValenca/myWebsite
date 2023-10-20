@@ -43,6 +43,7 @@ export const GridAndTypesContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 24px;
 `;
 
 export const ChallengesColumn = styled.div`
@@ -59,3 +60,12 @@ export const Type = styled.div`
   margin-right: 12px;
 `;
 
+export const NewGameButton = styled.button`
+  font-family: "pokemon_classicregular";
+  font-size: 18px;
+  background-color: #F2CB07;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+`;
