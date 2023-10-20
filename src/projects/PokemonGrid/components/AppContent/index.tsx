@@ -16,6 +16,7 @@ import {
   GridAndTypesContainer,
   ChallengesColumn,
   Type,
+  NewGameButton,
 } from "./style";
 
 const PokemonGrid = () => {
@@ -23,14 +24,21 @@ const PokemonGrid = () => {
 
   const [cellTypes, setCellTypes] = useState(Array(9).fill(Array(2).fill('')));
   const [selectedCellIndex, setSelectedCellIndex] = useState<number | 0>(0);
+  const [columnRandomTypes, setColumnRandomTypes] = useState(typeExporter.getRandomTypes(3));
+  const [rowRandomTypes, setRowRandomTypes] = useState(typeExporter.getRandomTypes(3));
 
   const pokemonData = useSelector((state: RootState) => state.pokemonGrid.fetchAllPokemon.pokemon);
 
-  const columnRandomTypes = useMemo(() => typeExporter.getRandomTypes(3), []);
-  const rowRandomTypes = useMemo(() => typeExporter.getRandomTypes(3), []);
-
   useEffect(() => {
     dispatch(fetchAllPokemon() as unknown as AnyAction);
+    gameStarter();
+  }, []);
+
+  useEffect(() => {
+    gameStarter();
+  }, [columnRandomTypes, rowRandomTypes]);
+
+  const gameStarter = () => {
     setCellTypes([[
       columnRandomTypes[0],
       rowRandomTypes[0],
@@ -60,7 +68,13 @@ const PokemonGrid = () => {
       rowRandomTypes[2],
     ]
     ]);
-  }, []);
+  };
+
+  const gameResetter = () => {
+    setColumnRandomTypes(typeExporter.getRandomTypes(3));
+    setRowRandomTypes(typeExporter.getRandomTypes(3));
+    gameStarter();
+  };
 
   const typeRandomizer = (column: boolean, row: boolean) => {
     if (column) return columnRandomTypes.map((type, index) => (
@@ -99,8 +113,14 @@ const PokemonGrid = () => {
             selectedCellIndex={selectedCellIndex}
             setSelectedCellIndex={setSelectedCellIndex}
             cellTypes={cellTypes}
+            gameResetter={gameResetter}
           />
         </GridAndTypesContainer>
+        <NewGameButton
+          onClick={() => gameResetter()}
+        >
+          New Game
+        </NewGameButton>
       </PokemonGridContainer>
     </AppContentContainer>
   );
