@@ -130,3 +130,28 @@ export const SelectPokemonButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const EndGameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+`;
+
+export const EndGameText = styled.p`
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F1F1F;
+  font-family: "Lato", sans-serif;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  margin-top: 24px;
+`;
