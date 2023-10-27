@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import App from './App';
 import PokeConsult from './projects/PokeConsult/pokeConsult';
 import MarvelSearch from './projects/MarvelSearch/components/AppContent';
-import PokemonGrid from './projects/PokemonGrid/components/AppContent';
+import PokemonGrid from './projects/PokemonGrid/components/PokemonGrid';
 
 const RoutesComponent = () => {
   console.log('teste')
