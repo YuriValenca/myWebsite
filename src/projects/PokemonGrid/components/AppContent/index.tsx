@@ -25,7 +25,7 @@ const PokemonGrid = () => {
   const [cellTypes, setCellTypes] = useState(Array(9).fill(Array(2).fill('')));
   const [selectedCellIndex, setSelectedCellIndex] = useState<number | 0>(0);
   const [columnRandomTypes, setColumnRandomTypes] = useState(typeExporter.getRandomTypes(3));
-  const [rowRandomTypes, setRowRandomTypes] = useState(typeExporter.getRandomTypes(3));
+  const [rowRandomTypes, setRowRandomTypes] = useState(typeExporter.getRandomTypes(3, columnRandomTypes));
 
   const pokemonData = useSelector((state: RootState) => state.pokemonGrid.fetchAllPokemon.pokemon);
 

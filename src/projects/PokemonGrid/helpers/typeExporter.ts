@@ -38,13 +38,22 @@ export const typeImages = {
   water: waterImg,
 }
 
-const getRandomTypes = (count: number): (keyof typeof typeImages)[] => {
-  const randomTypes = Object.keys(typeImages)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, count);
-  return randomTypes as (keyof typeof typeImages)[];
-}
+const getRandomTypes = (
+    count: number, selectedTypes: (keyof typeof typeImages)[] = []
+  ): (keyof typeof typeImages)[] => {
+  const allTypes = Object.keys(typeImages) as (keyof typeof typeImages)[];
+  const availableTypes = allTypes.filter(type => !selectedTypes.includes(type));
+  
+  const randomTypes: (keyof typeof typeImages)[] = [];
 
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * availableTypes.length);
+    const selectedType = availableTypes.splice(randomIndex, 1)[0];
+    randomTypes.push(selectedType);
+  }
+
+  return randomTypes;
+}
 
 export const typeExporter = {
   getRandomTypes,
