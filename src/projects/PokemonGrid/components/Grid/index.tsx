@@ -5,6 +5,7 @@ import Input from "../../../../components/Input";
 import { verifyUserChoice } from "../../store/actions/verifyUserChoice";
 import { useAppDispatch } from "../../../../store";
 import { AnyAction } from "redux";
+import { NewGameButton } from "../PokemonGrid/style";
 import {
   GridContainer,
   GridItem,
@@ -22,7 +23,6 @@ import {
   EndGameText,
   ButtonsContainer,
 } from "./style";
-import { NewGameButton } from "../AppContent/style";
 
 interface GridTypes {
   pokemonData: Pokemon[];
