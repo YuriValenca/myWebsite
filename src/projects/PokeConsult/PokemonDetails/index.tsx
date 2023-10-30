@@ -20,7 +20,7 @@ import {
   ErrorContainer,
 } from './style';
 
-interface PokemonDetailsTypes {
+interface PokeConsultAppContentTypes {
   id?: number;
   name?: string;
   imageUrl?: string;
@@ -30,7 +30,7 @@ interface PokemonDetailsTypes {
   weight?: number;
 }
 
-const PokemonDetails = ({
+const PokeConsultAppContent = ({
   id,
   name,
   imageUrl,
@@ -38,7 +38,7 @@ const PokemonDetails = ({
   stats,
   height,
   weight,
-}: PokemonDetailsTypes) => {
+}: PokeConsultAppContentTypes) => {
   const dispatch = useAppDispatch();
   const [pokemonName, setPokemonName] = useState('');
 
@@ -142,4 +142,4 @@ const PokemonDetails = ({
 
 };
 
-export default PokemonDetails;
+export default PokeConsultAppContent;

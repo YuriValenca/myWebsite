@@ -7,7 +7,7 @@ import { fetchAllHeroes } from '../../store/actions/fetchAllHeroes';
 import { AnyAction } from 'redux';
 import { MarvelSearchContainer } from './style';
 
-const MarvelSearch = () => {
+const MarvelAppContent = () => {
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -33,4 +33,4 @@ const MarvelSearch = () => {
   );
 }
 
-export default MarvelSearch;
+export default MarvelAppContent;
