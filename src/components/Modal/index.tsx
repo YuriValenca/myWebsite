@@ -26,7 +26,6 @@ const Modal = ({
       position={position}
     >
       <ModalContent
-        onClick={(e: any) => e.stopPropagation()}
         width={width}
         position={position}
       >
