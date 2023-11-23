@@ -29,3 +29,43 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'noto_sansmedium';
+  src: url('./assets/fonts/notosans-medium-webfont.woff2') format('woff2'),
+       url('./assets/fonts/notosans-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noto_sansregular';
+  src: url('./assets/fonts/notosans-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/notosans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noto_sanssemibold';
+  src: url('./assets/fonts/notosans-semibold-webfont.woff2') format('woff2'),
+       url('./assets/fonts/notosans-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noto_sansbold';
+  src: url('./assets/fonts/notosans-bold-webfont.woff2') format('woff2'),
+       url('./assets/fonts/notosans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noto_sanslight';
+  src: url('./assets/fonts/notosans-light-webfont.woff2') format('woff2'),
+       url('./assets/fonts/notosans-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
