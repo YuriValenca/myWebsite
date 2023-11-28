@@ -1,11 +1,11 @@
-import LandingPageAppContent from "./projects/LandingPage/AppContent";
+import LandingPage from "./projects/LandingPage/LandingPage";
 import './fonts.css';
 
 const App = () => {
 
   return (
     <>
-      <LandingPageAppContent />
+      <LandingPage />
     </>
   )
 }
