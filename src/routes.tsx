@@ -5,7 +5,6 @@ import MarvelAppContent from './projects/MarvelSearch/components/AppContent';
 import PokemonGridAppContent from './projects/PokemonGrid/components/AppContent';
 
 const RoutesComponent = () => {
-  console.log('teste')
   return (
     <Routes>
       <Route path="/" element={<App />} />
