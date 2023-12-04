@@ -51,17 +51,17 @@ const LandingPage = () => {
         <ProjectCard
           demo
           title="PokemonGrid"
-          path="pokemonGrid"
+          path="myWebsite/tree/main/src/projects/PokemonGrid"
         />
         <ProjectCard
           demo
           title="MarvelSearch"
-          path="marvelSearch"
+          path="fpass_challenge"
         />
         <ProjectCard
           demo
           title="PokeConsult"
-          path="pokeConsult"
+          path="myWebsite/tree/main/src/projects/PokeConsult"
         />
         <ProjectCard
           demo={false}
