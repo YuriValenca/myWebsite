@@ -23,7 +23,7 @@ const ProjectCard = ({
 }: ProjectCardTypes) => {
 
   const navigate = useNavigate();
-  const handleDemoClick = () => navigate(`/${path}`);
+  const handleDemoClick = () => navigate(`/${title}`);
   const handleGitHubClick = () => window.open(
     `https://github.com/YuriValenca/${path}`, "_blank"
   );
