@@ -96,7 +96,13 @@ const LandingPage = () => {
           <ContactsTextHighlight>
             Text me on WhatsApp!
             <ContactsText>
-              +55 81 997360119
+              <a
+                href="https://wa.link/eisimb"
+                target="_blank"
+                rel="noreferrer"
+              >
+                +55 81 997360119
+              </a>
             </ContactsText>
           </ContactsTextHighlight>
           <ContactsTextHighlight>
