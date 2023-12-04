@@ -7,7 +7,7 @@ import PokemonGridAppContent from './projects/PokemonGrid/components/AppContent'
 const RoutesComponent = () => {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/myWebsite" element={<App />} />
       <Route path="/pokeConsult" element={<PokeConsultAppContent />} />
       <Route path="/marvelSearch" element={<MarvelAppContent />} />
       <Route path="/pokemonGrid" element={<PokemonGridAppContent />} />
