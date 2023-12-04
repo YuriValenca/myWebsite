@@ -25,10 +25,14 @@ const LandingPage = () => {
           Yuri Valença
         </NameTitle>
         <ButtonsHolder>
-          <HeaderGoToButton>
+          <HeaderGoToButton
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             About
           </HeaderGoToButton>
-          <HeaderGoToButton>
+          <HeaderGoToButton
+            onClick={() => window.scrollTo({ top: document.body.offsetHeight, behavior: 'smooth' })}
+          >
             Contact
           </HeaderGoToButton>
         </ButtonsHolder>
