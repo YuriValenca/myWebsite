@@ -23,28 +23,29 @@ const ProjectCard = ({
 }: ProjectCardTypes) => {
 
   const navigate = useNavigate();
-  const handleClick = () => {
-    if (!demo) window.open(`https://github.com/YuriValenca/${path}/`, "_blank");
-    else
-      navigate(`./${path}`);
-    return;
-  }
+  const handleDemoClick = () => navigate(`/${path}`);
+  const handleGitHubClick = () => window.open(
+    `https://github.com/YuriValenca/${path}`, "_blank"
+  );
+
 
   return (
-    <ProjectCardContainer
-      onClick={handleClick}
-    >
+    <ProjectCardContainer>
       <TitleButtonContainer>
         <ProjectTitle>
           {title}
         </ProjectTitle>
         <ButtonsContainer>
           {demo && (
-            <DemoButton>
+            <DemoButton
+              onClick={handleDemoClick}
+            >
               View Demo
             </DemoButton>
           )}
-          <GithubButton>
+          <GithubButton
+            onClick={handleGitHubClick}
+          >
             <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff", }} />
             View on Github
           </GithubButton>
