@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/mywebsite/static/css/main.ab82ae7c.css",
+    "main.js": "/mywebsite/static/js/main.74841ff2.js",
+    "static/js/787.bbe01249.chunk.js": "/mywebsite/static/js/787.bbe01249.chunk.js",
+    "static/media/notFound.gif": "/mywebsite/static/media/notFound.24b46f78c5a592c8042a.gif",
+    "static/media/loading.gif": "/mywebsite/static/media/loading.b0b0eeb4ada174e31c92.gif",
+    "static/media/pokeball.png": "/mywebsite/static/media/pokeball.1455fa0086784c9f299f.png",
+    "static/media/flexo-regular-webfont.woff": "/mywebsite/static/media/flexo-regular-webfont.c940d3c4c27bf2c230f8.woff",
+    "static/media/vector.svg": "/mywebsite/static/media/vector.2f1c5b74e7e3033c519dba52f588e9f2.svg",
+    "static/media/flexo-regular-webfont.woff2": "/mywebsite/static/media/flexo-regular-webfont.e48d4d5afc2f6c76b67a.woff2",
+    "static/media/notosans-bold-webfont.woff": "/mywebsite/static/media/notosans-bold-webfont.7df3a7e4f9f7731ab80c.woff",
+    "static/media/notosans-semibold-webfont.woff": "/mywebsite/static/media/notosans-semibold-webfont.f9f27e5f198226ec576e.woff",
+    "static/media/FormulaCondensed-Light.woff": "/mywebsite/static/media/FormulaCondensed-Light.4d2018798f6bbdb02068.woff",
+    "static/media/notosans-medium-webfont.woff": "/mywebsite/static/media/notosans-medium-webfont.dc39f562cd42fdda7568.woff",
+    "static/media/notosans-light-webfont.woff": "/mywebsite/static/media/notosans-light-webfont.190755726bf50dd1ef84.woff",
+    "static/media/notosans-regular-webfont.woff": "/mywebsite/static/media/notosans-regular-webfont.74f3c570d99507745160.woff",
+    "static/media/FormulaCondensed-Bold.woff": "/mywebsite/static/media/FormulaCondensed-Bold.675027962d8afcf81e6c.woff",
+    "static/media/pokemonImageNotFound.png": "/mywebsite/static/media/pokemonImageNotFound.580cad614851ed3c533e.png",
+    "static/media/notosans-medium-webfont.woff2": "/mywebsite/static/media/notosans-medium-webfont.ae5b22a88302ca95e33b.woff2",
+    "static/media/notosans-bold-webfont.woff2": "/mywebsite/static/media/notosans-bold-webfont.d46cf5838621067fbc4b.woff2",
+    "static/media/notosans-semibold-webfont.woff2": "/mywebsite/static/media/notosans-semibold-webfont.83854f019db3684be370.woff2",
+    "static/media/notosans-regular-webfont.woff2": "/mywebsite/static/media/notosans-regular-webfont.63304e84505b1bbbed4a.woff2",
+    "static/media/notosans-light-webfont.woff2": "/mywebsite/static/media/notosans-light-webfont.7b394886a03eaa4d03a1.woff2",
+    "static/media/pokemon_classic-webfont.woff": "/mywebsite/static/media/pokemon_classic-webfont.35c4baf71fabeedf3edd.woff",
+    "static/media/mag_glass.png": "/mywebsite/static/media/mag_glass.7cf640d4e77827e54a62.png",
+    "static/media/water.png": "/mywebsite/static/media/water.6f2db9aefe8ed96ad942.png",
+    "static/media/pokemon_classic-webfont.woff2": "/mywebsite/static/media/pokemon_classic-webfont.4073ef4bae23f913ddea.woff2",
+    "index.html": "/mywebsite/index.html",
+    "main.ab82ae7c.css.map": "/mywebsite/static/css/main.ab82ae7c.css.map",
+    "main.74841ff2.js.map": "/mywebsite/static/js/main.74841ff2.js.map",
+    "787.bbe01249.chunk.js.map": "/mywebsite/static/js/787.bbe01249.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab82ae7c.css",
+    "static/js/main.74841ff2.js"
+  ]
+}
