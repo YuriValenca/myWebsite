@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/myWebsite/static/css/main.fa3d6d8d.css",
-    "main.js": "/myWebsite/static/js/main.084c3708.js",
+    "main.js": "/myWebsite/static/js/main.8f22a5e7.js",
     "static/js/787.bbe01249.chunk.js": "/myWebsite/static/js/787.bbe01249.chunk.js",
     "static/media/notFound.gif": "/myWebsite/static/media/notFound.24b46f78c5a592c8042a.gif",
     "static/media/loading.gif": "/myWebsite/static/media/loading.b0b0eeb4ada174e31c92.gif",
@@ -28,11 +28,11 @@
     "static/media/pokemon_classic-webfont.woff2": "/myWebsite/static/media/pokemon_classic-webfont.4073ef4bae23f913ddea.woff2",
     "index.html": "/myWebsite/index.html",
     "main.fa3d6d8d.css.map": "/myWebsite/static/css/main.fa3d6d8d.css.map",
-    "main.084c3708.js.map": "/myWebsite/static/js/main.084c3708.js.map",
+    "main.8f22a5e7.js.map": "/myWebsite/static/js/main.8f22a5e7.js.map",
     "787.bbe01249.chunk.js.map": "/myWebsite/static/js/787.bbe01249.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa3d6d8d.css",
-    "static/js/main.084c3708.js"
+    "static/js/main.8f22a5e7.js"
   ]
 }
