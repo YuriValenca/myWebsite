@@ -17,10 +17,8 @@ const Header = ({
 }: HeaderTypes) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/');
+    navigate('/myWebsite');
   }
-
-
 
   return (
     <HeaderContainer>
